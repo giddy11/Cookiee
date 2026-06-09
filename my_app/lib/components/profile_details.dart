@@ -11,7 +11,7 @@ class ProfileDetails extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
-            'Afuwape Abiodun',
+            'Edoghotu Gideon Azibaobuom',
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
