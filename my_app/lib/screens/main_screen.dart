@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/profile_screen.dart';
+import 'package:my_app/screens/profile_screen.dart';
 import 'package:my_app/screens/home_tab.dart';
 import 'package:my_app/screens/cart_tab.dart';
 import 'package:my_app/screens/notifications_tab.dart';
@@ -65,7 +65,7 @@ class _MainScreenState extends State<MainScreen> {
             selectedFontSize: 11,
             unselectedFontSize: 11,
             backgroundColor: Colors.white,
-            elevation: 0,
+            // elevation: 0,
             items: const [
               BottomNavigationBarItem(
                 icon: Icon(Icons.home_outlined),

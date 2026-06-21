@@ -29,15 +29,15 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: const [
             _SplashLogo(),
-            SizedBox(height: 20),
-            Text(
-              'Cookieennnnn',
-              style: TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-                letterSpacing: 1.2,
-              ),
-            ),
+            // SizedBox(height: 20),
+            // Text(
+            //   'Cookiee',
+            //   style: TextStyle(
+            //     fontSize: 28,
+            //     fontWeight: FontWeight.bold,
+            //     letterSpacing: 1.2,
+            //   ),
+            // ),
           ],
         ),
       ),
@@ -52,9 +52,9 @@ class _SplashLogo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Image.asset(
       'lib/assets/images/splash.png',
-      width: 120,
-      height: 120,
-      fit: BoxFit.contain,
+      // width: 120,
+      // height: 120,
+      // fit: BoxFit.contain,
     );
   }
 }

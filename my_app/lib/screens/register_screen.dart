@@ -13,7 +13,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
-  final _birthdateController = TextEditingController();
+  DateTime? _selectedDate;
 
   @override
   void dispose() {
@@ -21,8 +21,32 @@ class _RegisterScreenState extends State<RegisterScreen> {
     _emailController.dispose();
     _passwordController.dispose();
     _confirmPasswordController.dispose();
-    _birthdateController.dispose();
     super.dispose();
+  }
+
+  Future<void> _pickDate() async {
+    final now = DateTime.now();
+    final picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime(now.year - 18, now.month, now.day),
+      firstDate: DateTime(1900),
+      lastDate: now,
+      builder: (context, child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: const ColorScheme.light(
+              primary: Color(0xFF00BCD4),
+              onPrimary: Colors.white,
+              onSurface: Colors.black,
+            ),
+          ),
+          child: child!,
+        );
+      },
+    );
+    if (picked != null) {
+      setState(() => _selectedDate = picked);
+    }
   }
 
   void _onRegister() {
@@ -30,7 +54,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         _emailController.text.trim().isEmpty ||
         _passwordController.text.trim().isEmpty ||
         _confirmPasswordController.text.trim().isEmpty ||
-        _birthdateController.text.trim().isEmpty) {
+        _selectedDate == null) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Please fill in all fields')),
       );
@@ -129,9 +153,39 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     const SizedBox(height: 16),
                     _FieldLabel(label: 'BIRTHDATE'),
                     const SizedBox(height: 6),
-                    _RoundedTextField(
-                      controller: _birthdateController,
-                      hint: 'Enter your birth date',
+                    GestureDetector(
+                      onTap: _pickDate,
+                      child: Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: _selectedDate != null
+                                ? const Color(0xFF00BCD4)
+                                : const Color(0xFFCCCCCC),
+                            width: _selectedDate != null ? 1.5 : 1,
+                          ),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                _selectedDate != null
+                                    ? '${_selectedDate!.day.toString().padLeft(2, '0')}/${_selectedDate!.month.toString().padLeft(2, '0')}/${_selectedDate!.year}'
+                                    : 'Select your birth date',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: _selectedDate != null
+                                      ? Colors.black87
+                                      : Colors.black38,
+                                ),
+                              ),
+                            ),
+                            const Icon(Icons.calendar_today_outlined, size: 18, color: Colors.black38),
+                          ],
+                        ),
+                      ),
                     ),
                     const SizedBox(height: 12),
                   ],

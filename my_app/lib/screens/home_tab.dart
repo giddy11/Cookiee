@@ -11,7 +11,7 @@ class HomeTab extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        elevation: 0,
+        // elevation: 0,
         title: const Text(
           'Home',
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.w600),

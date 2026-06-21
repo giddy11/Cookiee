@@ -44,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        elevation: 0,
+        // elevation: 0,
         leading: const BackButton(color: Colors.black),
         title: const Text(
           'Login',
@@ -140,7 +140,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
-                    elevation: 0,
+                    // elevation: 0,
                   ),
                   child: const Text(
                     'Login',
@@ -207,10 +207,10 @@ class _RoundedTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(30),
           borderSide: const BorderSide(color: Color(0xFFCCCCCC)),
         ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30),
-          borderSide: const BorderSide(color: Color(0xFFCCCCCC)),
-        ),
+        // enabledBorder: OutlineInputBorder(
+        //   borderRadius: BorderRadius.circular(30),
+        //   borderSide: const BorderSide(color: Color(0xFFCCCCCC)),
+        // ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(30),
           borderSide: const BorderSide(color: Color(0xFF00BCD4), width: 1.5),
