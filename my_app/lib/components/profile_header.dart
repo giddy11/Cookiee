@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ProfileHeader extends StatelessWidget {
-  const ProfileHeader({super.key});
+  final String name;
+
+  const ProfileHeader({super.key, required this.name});
 
   @override
   Widget build(BuildContext context) {
@@ -9,11 +11,11 @@ class ProfileHeader extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: const [
-          SizedBox(width: 24),
-          _ProfileAvatar(),
-          SizedBox(width: 24),
-          Expanded(child: _ProfileStats()),
+        children: [
+          const SizedBox(width: 24),
+          const _ProfileAvatar(),
+          const SizedBox(width: 24),
+          const Expanded(child: _ProfileStats()),
         ],
       ),
     );
@@ -48,9 +50,9 @@ class _ProfileStats extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: const [
+      children: [
         _ProfileStat(label: 'Recipe', value: '4'),
         _ProfileStat(label: 'Followers', value: '2.5M'),
         _ProfileStat(label: 'Following', value: '259'),

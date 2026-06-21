@@ -1,4 +1,4 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:my_app/components/profile_app_bar.dart';
 import 'package:my_app/components/profile_details.dart';
 import 'package:my_app/components/profile_header.dart';
@@ -6,9 +6,10 @@ import 'package:my_app/components/profile_tabs.dart';
 import 'package:my_app/components/recipe_card.dart';
 
 class MyProfilePage extends StatefulWidget {
-  const MyProfilePage({super.key, required this.title});
+  final String name;
+  final String email;
 
-  final String title;
+  const MyProfilePage({super.key, required this.name, required this.email});
 
   @override
   State<MyProfilePage> createState() => _MyProfilePageState();
@@ -57,9 +58,9 @@ class _MyProfilePageState extends State<MyProfilePage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const ProfileHeader(),
+                    ProfileHeader(name: widget.name),
                     const SizedBox(height: 16),
-                    const ProfileDetails(),
+                    ProfileDetails(name: widget.name, email: widget.email),
                     const SizedBox(height: 20),
                     ProfileTabs(
                       selectedIndex: _selectedTab,
