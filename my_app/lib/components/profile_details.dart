@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class ProfileDetails extends StatelessWidget {
-  const ProfileDetails({super.key});
+  final String name;
+  final String email;
+
+  const ProfileDetails({super.key, required this.name, required this.email});
 
   @override
   Widget build(BuildContext context) {
@@ -10,20 +13,20 @@ class ProfileDetails extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Edoghotu Gideon Azibaobuom',
-            style: TextStyle(
+          Text(
+            name.isNotEmpty ? name : 'Guest User',
+            style: const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
               color: Colors.black,
             ),
           ),
           const SizedBox(height: 3),
-          const Text(
-            'Chief',
-            style: TextStyle(
+          Text(
+            email.isNotEmpty ? email : '',
+            style: const TextStyle(
               fontSize: 13,
-              color: Color(0xFF9E9E9E),
+              color: Color(0xFF00BCD4),
             ),
           ),
           const SizedBox(height: 10),

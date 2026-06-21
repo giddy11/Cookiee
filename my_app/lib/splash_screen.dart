@@ -1,7 +1,6 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:my_app/profile_screen.dart';
+import 'package:my_app/screens/login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -16,9 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Timer(const Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => const MyProfilePage(title: 'My First App Home Page'),
-        ),
+        MaterialPageRoute(builder: (_) => const LoginScreen()),
       );
     });
   }
@@ -26,35 +23,38 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: Colors.white,
-        width: double.infinity,
-        height: double.infinity,
+      backgroundColor: Colors.white,
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Center(
-                child: Image.asset(
-                  'lib/assets/images/splash.png',
-                  fit: BoxFit.contain,
-                ),
-              ),
-            ),
-            // const Padding(
-            //   padding: EdgeInsets.only(bottom: 32),
-            //   child: Text(
-            //     'Welcome to My First App',
-            //     style: TextStyle(
-            //       fontSize: 16,
-            //       fontWeight: FontWeight.w500,
-            //       color: Colors.black54,
-            //     ),
+          children: const [
+            _SplashLogo(),
+            // SizedBox(height: 20),
+            // Text(
+            //   'Cookiee',
+            //   style: TextStyle(
+            //     fontSize: 28,
+            //     fontWeight: FontWeight.bold,
+            //     letterSpacing: 1.2,
             //   ),
             // ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class _SplashLogo extends StatelessWidget {
+  const _SplashLogo();
+
+  @override
+  Widget build(BuildContext context) {
+    return Image.asset(
+      'lib/assets/images/splash.png',
+      // width: 120,
+      // height: 120,
+      // fit: BoxFit.contain,
     );
   }
 }
