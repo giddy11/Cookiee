@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/splash_screen.dart';
+import 'package:get/get.dart';
 
-void main() {
+import 'routes/app_pages.dart';
+import 'services/storage_service.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Get.putAsync<StorageService>(() => StorageService().init());
   runApp(const MyApp());
 }
 
@@ -10,10 +15,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'My First App',
+    return GetMaterialApp(
+      title: 'Cookiee',
       debugShowCheckedModeBanner: false,
-      home: const SplashScreen(),
+      theme: ThemeData(
+        useMaterial3: true,
+        scaffoldBackgroundColor: Colors.white,
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF00BCD4)),
+      ),
+      initialRoute: AppPages.initial,
+      getPages: AppPages.pages,
     );
   }
 }
