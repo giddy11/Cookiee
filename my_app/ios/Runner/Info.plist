@@ -26,6 +26,12 @@
 		<string>$(FLUTTER_BUILD_NUMBER)</string>
 		<key>LSRequiresIPhoneOS</key>
 		<true/>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>Cookiee needs access to your photo library to set a profile picture.</string>
+		<key>NSCameraUsageDescription</key>
+		<string>Cookiee needs access to your camera to take a profile picture.</string>
+		<key>NSMicrophoneUsageDescription</key>
+		<string>Cookiee does not use the microphone, but iOS requires this entry alongside camera access.</string>
 		<key>UIApplicationSceneManifest</key>
 		<dict>
 			<key>UIApplicationSupportsMultipleScenes</key>

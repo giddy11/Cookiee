@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import '../controllers/home_controller.dart';
 import '../screens/cart_tab.dart';
 import '../screens/notifications_tab.dart';
-import '../screens/profile_screen.dart';
 import '../screens/settings_tab.dart';
+import '../views/profile2_screen.dart';
 import '../widgets/recipe_list_tile.dart';
 
 const _brandColor = Color(0xFF00BCD4);
@@ -22,10 +22,7 @@ class HomeView extends GetView<HomeController> {
           children: [
             const _RecipesTab(),
             const CartTab(),
-            MyProfilePage(
-              name: controller.userName,
-              email: controller.userEmail,
-            ),
+            const Profile2Screen(),
             const NotificationsTab(),
             const SettingsTab(),
           ],

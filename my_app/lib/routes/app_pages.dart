@@ -1,10 +1,12 @@
 import 'package:get/get.dart';
 
 import '../bindings/auth_binding.dart';
+import '../bindings/edit_profile2_binding.dart';
 import '../bindings/home_binding.dart';
 import '../bindings/onboarding_binding.dart';
 import '../bindings/splash_binding.dart';
 import '../views/auth_view.dart';
+import '../views/edit_profile2_screen.dart';
 import '../views/home_view.dart';
 import '../views/onboarding_view.dart';
 import '../views/splash_view.dart';
@@ -35,6 +37,11 @@ class AppPages {
       name: Routes.home,
       page: () => const HomeView(),
       binding: HomeBinding(),
+    ),
+    GetPage(
+      name: Routes.editProfile2,
+      page: () => const EditProfile2Screen(),
+      binding: EditProfile2Binding(),
     ),
   ];
 }

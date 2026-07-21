@@ -15,9 +15,6 @@ class HomeController extends GetxController {
 
   final RxInt currentTabIndex = 0.obs;
 
-  String get userName => _storageService.userName;
-  String get userEmail => _storageService.userEmail;
-
   @override
   void onInit() {
     super.onInit();
