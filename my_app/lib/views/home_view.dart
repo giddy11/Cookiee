@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../controllers/cart_controller.dart';
 import '../controllers/home_controller.dart';
-import '../screens/cart_tab.dart';
+import '../routes/app_routes.dart';
 import '../screens/notifications_tab.dart';
 import '../screens/settings_tab.dart';
+import '../views/cart_view.dart';
 import '../views/profile2_screen.dart';
 import '../widgets/recipe_list_tile.dart';
 
@@ -21,7 +23,7 @@ class HomeView extends GetView<HomeController> {
           index: controller.currentTabIndex.value,
           children: [
             const _RecipesTab(),
-            const CartTab(),
+            const CartView(),
             const Profile2Screen(),
             const NotificationsTab(),
             const SettingsTab(),
@@ -58,28 +60,28 @@ class HomeView extends GetView<HomeController> {
               selectedFontSize: 11,
               unselectedFontSize: 11,
               backgroundColor: Colors.white,
-              items: const [
-                BottomNavigationBarItem(
+              items: [
+                const BottomNavigationBarItem(
                   icon: Icon(Icons.home_outlined),
                   activeIcon: Icon(Icons.home),
                   label: 'Home',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.shopping_cart_outlined),
-                  activeIcon: Icon(Icons.shopping_cart),
+                  icon: const _CartIcon(outlined: true),
+                  activeIcon: const _CartIcon(outlined: false),
                   label: 'Cart',
                 ),
-                BottomNavigationBarItem(
+                const BottomNavigationBarItem(
                   icon: Icon(Icons.person_outline),
                   activeIcon: Icon(Icons.person),
                   label: 'Profile',
                 ),
-                BottomNavigationBarItem(
+                const BottomNavigationBarItem(
                   icon: Icon(Icons.notifications_none_outlined),
                   activeIcon: Icon(Icons.notifications),
                   label: 'Notifications',
                 ),
-                BottomNavigationBarItem(
+                const BottomNavigationBarItem(
                   icon: Icon(Icons.settings_outlined),
                   activeIcon: Icon(Icons.settings),
                   label: 'Settings',
@@ -151,7 +153,11 @@ class _RecipesTab extends GetView<HomeController> {
               itemCount: controller.recipes.length,
               itemBuilder: (context, index) {
                 final recipe = controller.recipes[index];
-                return RecipeListTile(key: ValueKey(recipe.id), recipe: recipe);
+                return RecipeListTile(
+                  key: ValueKey(recipe.id),
+                  recipe: recipe,
+                  onTap: () => Get.toNamed(Routes.recipeDetail, arguments: recipe),
+                );
               },
             ),
           );
@@ -225,5 +231,26 @@ class _StatusMessage extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class _CartIcon extends StatelessWidget {
+  final bool outlined;
+  const _CartIcon({required this.outlined});
+
+  @override
+  Widget build(BuildContext context) {
+    final cartController = Get.find<CartController>();
+    return Obx(() {
+      final count = cartController.totalItemCount;
+      return Badge(
+        isLabelVisible: count > 0,
+        label: Text('$count'),
+        backgroundColor: const Color(0xFFE05252),
+        child: Icon(
+          outlined ? Icons.shopping_cart_outlined : Icons.shopping_cart,
+        ),
+      );
+    });
   }
 }

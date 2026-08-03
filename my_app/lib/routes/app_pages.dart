@@ -1,15 +1,23 @@
 import 'package:get/get.dart';
 
 import '../bindings/auth_binding.dart';
+import '../bindings/checkout_binding.dart';
 import '../bindings/edit_profile2_binding.dart';
 import '../bindings/home_binding.dart';
 import '../bindings/onboarding_binding.dart';
+import '../bindings/payment_binding.dart';
+import '../bindings/recipe_detail_binding.dart';
 import '../bindings/splash_binding.dart';
+import '../bindings/success_binding.dart';
 import '../views/auth_view.dart';
+import '../views/checkout_view.dart';
 import '../views/edit_profile2_screen.dart';
 import '../views/home_view.dart';
 import '../views/onboarding_view.dart';
+import '../views/payment_view.dart';
+import '../views/recipe_detail_view.dart';
 import '../views/splash_view.dart';
+import '../views/success_view.dart';
 import 'app_routes.dart';
 
 class AppPages {
@@ -42,6 +50,26 @@ class AppPages {
       name: Routes.editProfile2,
       page: () => const EditProfile2Screen(),
       binding: EditProfile2Binding(),
+    ),
+    GetPage(
+      name: Routes.recipeDetail,
+      page: () => const RecipeDetailView(),
+      binding: RecipeDetailBinding(),
+    ),
+    GetPage(
+      name: Routes.checkout,
+      page: () => const CheckoutView(),
+      binding: CheckoutBinding(),
+    ),
+    GetPage(
+      name: Routes.payment,
+      page: () => const PaymentView(),
+      binding: PaymentBinding(),
+    ),
+    GetPage(
+      name: Routes.success,
+      page: () => const SuccessView(),
+      binding: SuccessBinding(),
     ),
   ];
 }
